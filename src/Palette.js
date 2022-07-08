@@ -4,18 +4,8 @@ import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import CloseIcon from "@mui/icons-material/Close";
-import styled from "styled-components";
 
-const PaletteContainer = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-`;
-
-const PaletteColors = styled.div`
-  height: 90%;
-`;
+import { PaletteContainer, PaletteColors } from "./styles/PaletteStyles";
 
 export default class Palette extends Component {
   state = {
