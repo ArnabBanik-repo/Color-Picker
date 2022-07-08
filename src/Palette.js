@@ -4,7 +4,18 @@ import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import CloseIcon from "@mui/icons-material/Close";
-import "./Palette.css";
+import styled from "styled-components";
+
+const PaletteContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const PaletteColors = styled.div`
+  height: 90%;
+`;
 
 export default class Palette extends Component {
   state = {
@@ -45,14 +56,14 @@ export default class Palette extends Component {
       />
     ));
     return (
-      <div className="Palette">
+      <PaletteContainer>
         <Navbar
           level={level}
           changeLevel={this.changeLevel}
           changeColor={this.changeColor}
           showingFullPalette
         />
-        <div className="Palette-colors">{colorBoxes}</div>
+        <PaletteColors>{colorBoxes}</PaletteColors>
         <Snackbar
           open={this.state.open}
           onClose={this.closeSnackbar}
@@ -72,7 +83,7 @@ export default class Palette extends Component {
           ]}
         />
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
-      </div>
+      </PaletteContainer>
     );
   }
 }

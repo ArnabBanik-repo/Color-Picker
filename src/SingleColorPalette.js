@@ -4,8 +4,18 @@ import React, { Component } from "react";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+const PaletteContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const PaletteColors = styled.div`
+  height: 90%;
+`;
 
 const CB = styled.div`
   background-color: black;
@@ -89,16 +99,16 @@ export default class SingleColorPalette extends Component {
       />
     ));
     return (
-      <div className="SingleColorPalette Palette">
+      <PaletteContainer>
         <Navbar changeColor={this.changeColor} />
-        <div className="Palette-colors">
+        <PaletteColors>
           {colorBoxes}
           <CB background="black" showingFullPalette={false}>
             <BackButton className="back-button" onClick={this.goBack}>
               GO BACK
             </BackButton>
           </CB>
-        </div>
+        </PaletteColors>
         <Snackbar
           open={this.state.open}
           onClose={this.closeSnackbar}
@@ -121,7 +131,7 @@ export default class SingleColorPalette extends Component {
           paletteName={this.props.palette.paletteName}
           emoji={this.props.palette.emoji}
         />
-      </div>
+      </PaletteContainer>
     );
   }
 }

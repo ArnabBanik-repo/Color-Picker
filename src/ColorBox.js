@@ -3,7 +3,6 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Link } from "react-router-dom";
 import chroma, { scale } from "chroma-js";
 import styled from "styled-components";
-import "./ColorBox.css";
 
 const ColorName = styled.span`
   color: ${(props) => (props.lum >= 0.55 ? "black" : "white")};
