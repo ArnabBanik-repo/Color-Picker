@@ -1,7 +1,12 @@
-import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import styled from 'styled-components'
+import DeleteIcon from '@mui/icons-material/Delete'
+
+const StyledDeleteIcon = styled(DeleteIcon)`
+	transition: all 0.3s ease;
+	cursor: pointer;
+`
 
 const ColorBox = styled(Box)`
 	background-color: ${props => props.bg};
@@ -10,46 +15,39 @@ const ColorBox = styled(Box)`
 	margin: 0 auto;
 	display: inline-block;
 	position: relative;
+	margin-bottom: -3.5px;
+	&:hover ${StyledDeleteIcon} {
+		color: white;
+		transform: scale(1.2);
+	}
 `
 
 const BoxContent = styled.div`
 	position: absolute;
 	width: 100%;
+	left: 0;
 	bottom: 0rem;
-	color: black;
+	color: rgba(0, 0, 0, 0.5);
 	text-transform: uppercase;
 	font-size: 12px;
 	letter-spacing: 1px;
-`
-
-const DeleteButton = styled.button`
-	background: rgba(255, 255, 255, 0.3);
-	position: absolute;
-	border: none;
-	right: 0.5rem;
-	bottom: 0.2rem;
-	width: 60px;
-	height: 30px;
-	text-align: center;
-	line-height: 30px;
-	text-transform: uppercase;
-	color: white;
-	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 0.7rem;
 `
 
 const ColorName = styled.span`
 	color: white;
-	position: relative;
-	left: 1rem;
-	bottom: 0.3rem;
 `
 
 const DraggableColorBox = props => {
+	const { bg, name, handleClick } = props
 	return (
-		<ColorBox bg={props.bg}>
+		<ColorBox bg={bg}>
 			<BoxContent>
-				<ColorName>{props.name}</ColorName>
-				<DeleteButton>X</DeleteButton>
+				<ColorName>{name}</ColorName>
+				<StyledDeleteIcon onClick={() => handleClick(name)} />
 			</BoxContent>
 		</ColorBox>
 	)

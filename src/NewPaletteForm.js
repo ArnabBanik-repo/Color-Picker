@@ -126,6 +126,12 @@ export default class NewPaletteForm extends Component {
 		)
 	}
 
+	deleteColor = colorName => {
+		this.setState(st => ({
+			colors: st.colors.filter(({ name }) => name !== colorName),
+		}))
+	}
+
 	handleChange = e => {
 		this.setState({
 			[e.target.name]: e.target.value,
@@ -260,6 +266,7 @@ export default class NewPaletteForm extends Component {
 							name={color.name}
 							bg={color.color}
 							key={color.name}
+							handleClick={this.deleteColor}
 						/>
 					))}
 				</Main>
