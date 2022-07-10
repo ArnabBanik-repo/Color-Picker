@@ -1,29 +1,36 @@
-import styled from "styled-components";
+import { Box } from '@mui/material'
+import styled from 'styled-components'
 
-export const Root = styled.div`
-  background: blue;
-  height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-`;
+export const Root = styled(Box)`
+	height: 100vh;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	background: blue;
+	overflow-y: scroll;
+`
 export const Container = styled.div`
-  width: 50%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
-`;
+	width: 50%;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	flex-wrap: wrap;
+`
 export const Nav = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  color: white;
-`;
+	display: flex;
+	width: 100%;
+	margin: 1rem 0 1.2rem;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+	a {
+		color: white;
+	}
+`
 export const Palettes = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 30%);
-  grid-gap: 5%;
-`;
+	box-sizing: border-box;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 30%);
+	grid-gap: 2.5rem;
+`
