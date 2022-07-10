@@ -1,4 +1,5 @@
 import { Box } from '@mui/system'
+import { SortableElement } from 'react-sortable-hoc'
 import React from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -15,7 +16,7 @@ const ColorBox = styled(Box)`
 	margin: 0 auto;
 	display: inline-block;
 	position: relative;
-	margin-bottom: -3.5px;
+	margin-bottom: -7.2px;
 	&:hover ${StyledDeleteIcon} {
 		color: white;
 		transform: scale(1.2);
@@ -41,7 +42,7 @@ const ColorName = styled.span`
 	color: white;
 `
 
-const DraggableColorBox = props => {
+const DraggableColorBox = SortableElement(props => {
 	const { bg, name, handleClick } = props
 	return (
 		<ColorBox bg={bg}>
@@ -51,6 +52,5 @@ const DraggableColorBox = props => {
 			</BoxContent>
 		</ColorBox>
 	)
-}
-
+})
 export default DraggableColorBox
