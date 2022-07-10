@@ -74,9 +74,10 @@ export default class NewPaletteForm extends Component {
 		super(props)
 		this.state = {
 			open: false,
-			curr_color: '#e4af3c',
+			curr_color: '#000fff',
 			colorName: '',
-			colors: [{ color: 'red', name: 'red' }],
+			paletteName: '',
+			colors: [],
 		}
 	}
 
@@ -91,10 +92,15 @@ export default class NewPaletteForm extends Component {
 				color => color.color !== this.state.curr_color
 			)
 		)
+		ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
+			this.props.palettes.every(
+				({ paletteName }) => paletteName !== value
+			)
+		)
 	}
 
 	savePalette = () => {
-		const paletteName = 'New Test Palette'
+		const paletteName = this.state.paletteName
 		const newPalette = {
 			paletteName: paletteName,
 			emoji: '💯',
@@ -122,7 +128,7 @@ export default class NewPaletteForm extends Component {
 
 	handleChange = e => {
 		this.setState({
-			colorName: e.target.value,
+			[e.target.name]: e.target.value,
 		})
 	}
 
@@ -165,13 +171,26 @@ export default class NewPaletteForm extends Component {
 						<Typography variant='h6' noWrap component='div'>
 							Persistent drawer
 						</Typography>
-						<Button
-							variant='contained'
-							color='primary'
-							onClick={this.savePalette}
-						>
-							Save palette
-						</Button>
+						<ValidatorForm onSubmit={this.savePalette}>
+							<TextValidator
+								label='Palette Name'
+								name='paletteName'
+								value={this.state.paletteName}
+								onChange={this.handleChange}
+								validators={['required', 'isPaletteNameUnique']}
+								errorMessages={[
+									'Enter a palette name',
+									'Name already in use',
+								]}
+							/>
+							<Button
+								variant='contained'
+								color='primary'
+								type='submit'
+							>
+								Save palette
+							</Button>
+						</ValidatorForm>
 					</Toolbar>
 				</AppBar>
 				<Drawer
@@ -210,6 +229,7 @@ export default class NewPaletteForm extends Component {
 					<ValidatorForm onSubmit={this.addColor}>
 						<TextValidator
 							label='Color Name'
+							name='colorName'
 							value={this.state.colorName}
 							onChange={this.handleChange}
 							validators={[
