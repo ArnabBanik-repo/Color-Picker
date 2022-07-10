@@ -1,17 +1,8 @@
 import React, { Component } from 'react'
-import PaletteFormNav from './PaletteFormNav'
 import { styled } from '@mui/material/styles'
-import Box from '@mui/material/Box'
-import Drawer from '@mui/material/Drawer'
-import Typography from '@mui/material/Typography'
-import Divider from '@mui/material/Divider'
-import IconButton from '@mui/material/IconButton'
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import { ChromePicker } from 'react-color'
 import { Button } from '@mui/material'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
-import DraggableColorBoxList from './DraggableColorBoxList'
-import { arrayMoveImmutable } from 'array-move'
 
 const AddButton = styled(Button)`
 	background-color: ${props => props.bg};
