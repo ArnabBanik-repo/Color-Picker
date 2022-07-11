@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { Link } from 'react-router-dom'
 import PaletteMetaForm from './PaletteMetaForm'
 import {
@@ -44,7 +44,7 @@ export default class PaletteFormNav extends Component {
                 ...(open && { display: 'none' }),
               }}
             >
-              <MenuIcon />
+              <ChevronRightIcon />
             </IconButton>
 
             <Typography variant='h6' noWrap component='div'>
