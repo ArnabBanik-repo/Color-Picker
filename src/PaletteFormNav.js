@@ -57,6 +57,10 @@ export default class PaletteFormNav extends Component {
     this.setState({ isFormShowing: true })
   }
 
+  hideForm = () => {
+    this.setState({ isFormShowing: false })
+  }
+
   render() {
     const { open, savePalette, handleDrawerOpen, palettes } = this.props
     const { isFormShowing } = this.state
@@ -94,7 +98,12 @@ export default class PaletteFormNav extends Component {
           </NavBtns>
         </AppBar>
         {isFormShowing && (
-          <PaletteMetaForm palettes={palettes} savePalette={savePalette} />
+          <PaletteMetaForm
+            palettes={palettes}
+            savePalette={savePalette}
+            hideForm={this.hideForm}
+            open={isFormShowing}
+          />
         )}
       </Root>
     )

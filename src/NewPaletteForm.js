@@ -70,10 +70,10 @@ export default class NewPaletteForm extends Component {
     }
   }
 
-  savePalette = paletteName => {
+  savePalette = (paletteName, paletteEmoji) => {
     const newPalette = {
       paletteName: paletteName,
-      emoji: '💯',
+      emoji: paletteEmoji,
       id: paletteName.toLowerCase().replace(/ /g, '-'),
       colors: this.state.colors,
     }
