@@ -9,96 +9,94 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { Button } from '@mui/material'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
 import { Link } from 'react-router-dom'
+import { Box } from '@mui/system'
+import PaletteMetaForm from './PaletteMetaForm'
 
 const drawerWidth = 400
 
 const AppBar = styled(MuiAppBar, {
-	shouldForwardProp: prop => prop !== 'open',
+  shouldForwardProp: prop => prop !== 'open',
 })(({ theme, open }) => ({
-	transition: theme.transitions.create(['margin', 'width'], {
-		easing: theme.transitions.easing.sharp,
-		duration: theme.transitions.duration.leavingScreen,
-	}),
-	...(open && {
-		width: `calc(100% - ${drawerWidth}px)`,
-		marginLeft: `${drawerWidth}px`,
-		transition: theme.transitions.create(['margin', 'width'], {
-			easing: theme.transitions.easing.easeOut,
-			duration: theme.transitions.duration.enteringScreen,
-		}),
-	}),
+  transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  height: '64px',
 }))
 
-export default class PaletteFormNav extends Component {
-	state = {
-		paletteName: '',
-	}
+const Root = styled(Box)({
+  display: 'flex',
+})
 
-	componentDidMount() {
-		ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
-			this.props.palettes.every(
-				({ paletteName }) => paletteName !== value
-			)
-		)
-	}
-	handleChange = e => {
-		this.setState({
-			[e.target.name]: e.target.value,
-		})
-	}
-	render() {
-		const { open, savePalette, handleDrawerOpen } = this.props
-		const { paletteName } = this.state
-		return (
-			<div>
-				<CssBaseline />
-				<AppBar position='fixed' open={open} color='default'>
-					<Toolbar>
-						<IconButton
-							color='inherit'
-							aria-label='open drawer'
-							onClick={handleDrawerOpen}
-							edge='start'
-							sx={{
-								mr: 2,
-								...(open && { display: 'none' }),
-							}}
-						>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant='h6' noWrap component='div'>
-							Persistent drawer
-						</Typography>
-						<ValidatorForm
-							onSubmit={() => savePalette(paletteName)}
-						>
-							<TextValidator
-								label='Palette Name'
-								name='paletteName'
-								value={paletteName}
-								onChange={this.handleChange}
-								validators={['required', 'isPaletteNameUnique']}
-								errorMessages={[
-									'Enter a palette name',
-									'Name already in use',
-								]}
-							/>
-							<Link to='/'>
-								<Button variant={`contained`} color='error'>
-									Go Back
-								</Button>
-							</Link>
-							<Button
-								variant='contained'
-								color='primary'
-								type='submit'
-							>
-								Save palette
-							</Button>
-						</ValidatorForm>
-					</Toolbar>
-				</AppBar>
-			</div>
-		)
-	}
+const NavBtns = styled('div')({
+  marginRight: '1rem',
+})
+
+const StyledButton = styled(Button)({
+  margin: '0 0.5rem',
+})
+
+export default class PaletteFormNav extends Component {
+  state = {
+    isFormShowing: false,
+  }
+
+  showForm = () => {
+    this.setState({ isFormShowing: true })
+  }
+
+  render() {
+    const { open, savePalette, handleDrawerOpen, palettes } = this.props
+    const { isFormShowing } = this.state
+    return (
+      <Root>
+        <CssBaseline />
+        <AppBar position='fixed' open={open} color='default'>
+          <Toolbar>
+            <IconButton
+              color='inherit'
+              aria-label='open drawer'
+              onClick={handleDrawerOpen}
+              edge='start'
+              sx={{
+                mr: 2,
+                ...(open && { display: 'none' }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            <Typography variant='h6' noWrap component='div'>
+              Create A Palette
+            </Typography>
+          </Toolbar>
+          <NavBtns>
+            <Link to='/' style={{ textDecoration: 'none' }}>
+              <StyledButton variant={`contained`} color='error'>
+                Go Back
+              </StyledButton>
+            </Link>
+            <StyledButton variant='contained' onClick={this.showForm}>
+              Save
+            </StyledButton>
+          </NavBtns>
+        </AppBar>
+        {isFormShowing && (
+          <PaletteMetaForm palettes={palettes} savePalette={savePalette} />
+        )}
+      </Root>
+    )
+  }
 }
