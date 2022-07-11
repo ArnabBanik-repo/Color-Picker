@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 import {
   MiniColor,
@@ -9,7 +9,7 @@ import {
   StyledDeleteIcon,
 } from './styles/MiniPaletteStyles'
 
-class MiniPalette extends Component {
+class MiniPalette extends PureComponent {
   handleDelete = e => {
     e.stopPropagation()
     this.props.deletePalette(this.props.id)

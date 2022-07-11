@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PaletteContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-`;
+`
 
 export const PaletteColors = styled.div`
   height: 90%;
-`;
+`
 
 export const CB = styled.div`
   background-color: black;
@@ -19,8 +19,8 @@ export const CB = styled.div`
   display: inline-block;
   position: relative;
   cursor: pointer;
-  margin-bottom: -5px;
-`;
+  margin-bottom: -6.5px;
+`
 
 export const BackButton = styled.button`
   width: 100px;
@@ -40,4 +40,4 @@ export const BackButton = styled.button`
   cursor: pointer;
   opacity: 1;
   color: white;
-`;
+`

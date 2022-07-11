@@ -6,6 +6,7 @@ import { TextValidator } from 'react-material-ui-form-validator'
 
 export const AddButton = styled(Button)`
   background-color: ${props => props.bg};
+  color: ${props => (props.lum >= 0.6 ? 'rgba(0,0,0,0.7)' : 'white')};
   &:hover {
     background-color: ${props => chroma(props.bg).darken(1).hex()};
   }

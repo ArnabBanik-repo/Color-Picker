@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { ValidatorForm } from 'react-material-ui-form-validator'
+import chroma from 'chroma-js'
 
 import {
   AddButton,
@@ -56,7 +57,7 @@ export default class ColorPickerForm extends Component {
           onChange={this.handleColorChange}
           disableAlpha={true}
         />
-        <ValidatorForm onSubmit={this.addColor}>
+        <ValidatorForm onSubmit={this.addColor} instantValidate={false}>
           <ColorNameInput
             label='Color Name'
             name='colorName'
@@ -74,6 +75,7 @@ export default class ColorPickerForm extends Component {
           <AddButton
             variant='contained'
             bg={curr_color}
+            lum={chroma(`${curr_color}`).luminance()}
             type='submit'
             disabled={isFull}
           >

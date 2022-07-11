@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 export const ColorName = styled.span`
-  color: ${(props) => (props.lum >= 0.55 ? "black" : "white")};
-`;
+  color: ${props => (props.lum >= 0.55 ? 'black' : 'white')};
+`
 
 export const BoxContent = styled.div`
   position: absolute;
@@ -12,7 +12,7 @@ export const BoxContent = styled.div`
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
-`;
+`
 
 export const CopyButton = styled.button`
   width: 100px;
@@ -32,22 +32,22 @@ export const CopyButton = styled.button`
   transition: all 0.5s ease;
   cursor: pointer;
   opacity: 0;
-  color: ${(props) => (props.lum >= 0.7 ? "rgba(0,0,0,0.7)" : "white")};
-`;
+  color: ${props => (props.lum >= 0.7 ? 'rgba(0,0,0,0.7)' : 'white')};
+`
 
 export const ColorBoxMain = styled.div`
-  background-color: ${(props) => props.bg};
+  background-color: ${props => props.bg};
   width: 20%;
-  height: ${(props) => (props.showingFullPalette ? "25%" : "50%")};
+  height: ${props => (props.showingFullPalette ? '25%' : '50%')};
   margin: 0 auto;
   display: inline-block;
   position: relative;
   cursor: pointer;
-  margin-bottom: -5px;
+  margin-bottom: -6.5px;
   &:hover ${CopyButton} {
     opacity: 1;
   }
-`;
+`
 
 export const MoreButton = styled.button`
   background: rgba(255, 255, 255, 0.3);
@@ -60,12 +60,12 @@ export const MoreButton = styled.button`
   text-align: center;
   line-height: 30px;
   text-transform: uppercase;
-  color: ${(props) => (props.lum >= 0.6 ? "rgba(0,0,0,0.5)" : "white")};
-`;
+  color: ${props => (props.lum >= 0.6 ? 'rgba(0,0,0,0.5)' : 'white')};
+`
 
 export const CopiedColor = styled.p`
-  color: ${(props) => (props.lum >= 0.6 ? "rgba(0,0,0,0.7)" : "white")};
-`;
+  color: ${props => (props.lum >= 0.6 ? 'rgba(0,0,0,0.7)' : 'white')};
+`
 
 export const CopyOverlay = styled.div`
   transform: scale(0.1);
@@ -75,11 +75,11 @@ export const CopyOverlay = styled.div`
   height: 100%;
   position: absolute;
   transition: transform 0.6s ease-in-out;
-  transform: ${(props) => (props.show ? `scale(50)` : `scale(0.1)`)};
-  background-color: ${(props) => props.bg};
-  opacity: ${(props) => (props.show ? 1 : 0)};
-  z-index: ${(props) => (props.show ? 10 : -1)};
-`;
+  transform: ${props => (props.show ? `scale(50)` : `scale(0.1)`)};
+  background-color: ${props => props.bg};
+  opacity: ${props => (props.show ? 1 : 0)};
+  z-index: ${props => (props.show ? 10 : -1)};
+`
 
 export const CopyMessage = styled.div`
   position: fixed;
@@ -95,11 +95,12 @@ export const CopyMessage = styled.div`
   color: white;
   transition: transform 0.4s ease, opacity 0.4s ease;
   transition-delay: 0.1s;
-  opacity: ${(props) => (props.show ? 1 : 0)};
-  transform: ${(props) => (props.show ? `scale(1)` : `scale(0.1)`)};
-  z-index: ${(props) => (props.show ? 10 : -1)};
+  opacity: ${props => (props.show ? 1 : 0)};
+  transform: ${props => (props.show ? `scale(1)` : `scale(0.1)`)};
+  z-index: ${props => (props.show ? 10 : -1)};
   h1 {
     font-weight: 400;
+    line-height: 3.5rem;
     text-shadow: 1px 2px black;
     background: rgba(255, 255, 255, 0.2);
     width: 100%;
@@ -113,4 +114,4 @@ export const CopyMessage = styled.div`
     font-weight: 100;
     opacity: 0.7;
   }
-`;
+`

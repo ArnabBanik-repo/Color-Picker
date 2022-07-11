@@ -1,5 +1,6 @@
 import { SortableElement } from 'react-sortable-hoc'
 import React from 'react'
+import chroma from 'chroma-js'
 
 import {
   StyledDeleteIcon,
@@ -12,9 +13,11 @@ const DraggableColorBox = SortableElement(props => {
   return (
     <ColorBox bg={bg}>
       <BoxContent>
-        <ColorName>{name}</ColorName>
+        <ColorName lum={chroma(`${bg}`).luminance()}>{name}</ColorName>
         <StyledDeleteIcon
-          onClick={() => handleClick(name)}
+          onClick={() => {
+            handleClick(name)
+          }}
           sx={{ transition: 'all 0.3s ease-in-out' }}
         />
       </BoxContent>

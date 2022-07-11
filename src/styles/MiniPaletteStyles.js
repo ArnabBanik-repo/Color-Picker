@@ -55,7 +55,7 @@ export const MiniColor = styled.div`
   display: inline-block;
   margin: 0 auto;
   position: relative;
-  margin-bottom: -4.5px;
+  margin-bottom: -6px;
 `
 
 export const Emoji = styled.span`

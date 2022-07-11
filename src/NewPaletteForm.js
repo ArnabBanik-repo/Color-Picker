@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PaletteFormNav from './PaletteFormNav'
-import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
@@ -10,6 +9,7 @@ import { Button } from '@mui/material'
 import DraggableColorBoxList from './DraggableColorBoxList'
 import { arrayMoveImmutable } from 'array-move'
 import ColorPickerForm from './ColorPickerForm'
+import seedColors from './seedColors'
 import {
   Main,
   DrawerHeader,
@@ -26,10 +26,7 @@ export default class NewPaletteForm extends Component {
     super(props)
     this.state = {
       open: true,
-      colors:
-        this.props.palettes[
-          Math.floor(Math.random() * this.props.palettes.length)
-        ].colors,
+      colors: seedColors[Math.floor(Math.random() * seedColors.length)].colors,
     }
   }
 
@@ -103,7 +100,7 @@ export default class NewPaletteForm extends Component {
 
     const isFull = colors.length >= maxColors
     return (
-      <Box sx={{ display: 'flex' }}>
+      <div sx={{ display: 'flex' }}>
         <PaletteFormNav
           open={open}
           palettes={palettes}
@@ -174,9 +171,10 @@ export default class NewPaletteForm extends Component {
             deleteColor={this.deleteColor}
             axis='xy'
             onSortEnd={this.onSortEnd}
+            distance={20}
           />
         </Main>
-      </Box>
+      </div>
     )
   }
 }

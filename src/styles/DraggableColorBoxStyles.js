@@ -36,5 +36,5 @@ export const BoxContent = styled.div`
 `
 
 export const ColorName = styled.span`
-  color: white;
+  color: ${props => (props.lum >= 0.6 ? 'rgba(0,0,0,0.7)' : 'white')};
 `

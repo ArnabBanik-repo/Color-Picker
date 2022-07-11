@@ -19,7 +19,6 @@ export default function PaletteMetaForm({ palettes, savePalette, hideForm }) {
 
   const emojiStage = async () => {
     setStage((stage + 1) % 2)
-    console.log(stage)
   }
 
   const handleChange = async e => {
@@ -40,6 +39,7 @@ export default function PaletteMetaForm({ palettes, savePalette, hideForm }) {
     if (!didMount.current) {
       return (didMount.current = true)
     }
+    setStage(3)
     savePalette(paletteName, chosenEmoji.emoji)
   }, [chosenEmoji])
 
