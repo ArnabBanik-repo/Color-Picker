@@ -7,6 +7,11 @@ export default class PaletteList extends Component {
   goToPalette = id => {
     this.props.history.push(`/palette/${id}`)
   }
+
+  handleDelete = id => {
+    this.props.handleDelete(id)
+  }
+
   render() {
     const { palettes } = this.props
     return (
@@ -22,6 +27,7 @@ export default class PaletteList extends Component {
                 {...palette}
                 key={palette.id}
                 handleClick={this.goToPalette}
+                deletePalette={this.handleDelete}
               />
             ))}
           </Palettes>

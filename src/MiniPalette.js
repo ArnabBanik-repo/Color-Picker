@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react'
 
 import {
   MiniColor,
@@ -6,22 +6,34 @@ import {
   Colors,
   Title,
   Emoji,
-} from "./styles/MiniPaletteStyles";
+  StyledDeleteIcon,
+} from './styles/MiniPaletteStyles'
 
-function MiniPalette(props) {
-  const { paletteName, emoji, colors, handleClick, id } = props;
-  const miniColorBoxes = colors.map((color) => (
-    <MiniColor key={color.name} bg={color.color}></MiniColor>
-  ));
-  return (
-    <StyledMiniPalette onClick={() => handleClick(id)}>
-      <Colors>{miniColorBoxes}</Colors>
-      <Title>
-        {paletteName}
-        <Emoji>{emoji}</Emoji>
-      </Title>
-    </StyledMiniPalette>
-  );
+class MiniPalette extends Component {
+  handleDelete = e => {
+    e.stopPropagation()
+    this.props.deletePalette(this.props.id)
+  }
+  render() {
+    const { paletteName, emoji, colors, handleClick, id } = this.props
+    const miniColorBoxes = colors.map(color => (
+      <MiniColor key={color.name} bg={color.color}></MiniColor>
+    ))
+    return (
+      <StyledMiniPalette onClick={() => handleClick(id)}>
+        <StyledDeleteIcon
+          onClick={this.handleDelete}
+          style={{ transition: 'all 0.3s ease-in-out' }}
+        />
+
+        <Colors>{miniColorBoxes}</Colors>
+        <Title>
+          {paletteName}
+          <Emoji>{emoji}</Emoji>
+        </Title>
+      </StyledMiniPalette>
+    )
+  }
 }
 
-export default MiniPalette;
+export default MiniPalette

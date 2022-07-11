@@ -3,7 +3,6 @@ import { Box } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 export const StyledDeleteIcon = styled(DeleteIcon)`
-  transition: all 0.3s ease;
   cursor: pointer;
 `
 

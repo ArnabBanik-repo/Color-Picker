@@ -13,7 +13,10 @@ const DraggableColorBox = SortableElement(props => {
     <ColorBox bg={bg}>
       <BoxContent>
         <ColorName>{name}</ColorName>
-        <StyledDeleteIcon onClick={() => handleClick(name)} />
+        <StyledDeleteIcon
+          onClick={() => handleClick(name)}
+          sx={{ transition: 'all 0.3s ease-in-out' }}
+        />
       </BoxContent>
     </ColorBox>
   )
