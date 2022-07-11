@@ -19,7 +19,7 @@ export const CB = styled.div`
   display: inline-block;
   position: relative;
   cursor: pointer;
-  margin-bottom: -6.5px;
+  margin-bottom: -7px;
 `
 
 export const BackButton = styled.button`

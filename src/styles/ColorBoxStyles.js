@@ -43,7 +43,7 @@ export const ColorBoxMain = styled.div`
   display: inline-block;
   position: relative;
   cursor: pointer;
-  margin-bottom: -6.5px;
+  margin-bottom: -7px;
   &:hover ${CopyButton} {
     opacity: 1;
   }
