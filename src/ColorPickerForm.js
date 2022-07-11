@@ -1,33 +1,12 @@
 import React, { Component } from 'react'
-import { styled } from '@mui/material/styles'
-import { ChromePicker } from 'react-color'
-import { Button } from '@mui/material'
-import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
-import chroma from 'chroma-js'
+import { ValidatorForm } from 'react-material-ui-form-validator'
 
-const AddButton = styled(Button)`
-  background-color: ${props => props.bg};
-  &:hover {
-    background-color: ${props => chroma(props.bg).darken(1).hex()};
-  }
-  width: 100%;
-  padding: 0.6rem;
-  margin-top: 0.7rem;
-  font-size: 2rem;
-`
-const Container = styled('div')`
-  width: 88%;
-`
-
-const ColorNameInput = styled(TextValidator)`
-  width: 100%;
-  height: 70px;
-`
-
-const StyledChromePicker = styled(ChromePicker)`
-  width: 100% !important;
-  margin-top: 2rem;
-`
+import {
+  AddButton,
+  Container,
+  ColorNameInput,
+  StyledChromePicker,
+} from './styles/ColorPickerFormStyles'
 
 export default class ColorPickerForm extends Component {
   state = {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PaletteFormNav from './PaletteFormNav'
-import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
@@ -11,49 +10,13 @@ import { Button } from '@mui/material'
 import DraggableColorBoxList from './DraggableColorBoxList'
 import { arrayMoveImmutable } from 'array-move'
 import ColorPickerForm from './ColorPickerForm'
-
-const drawerWidth = 400
-
-const Main = styled('main', { shouldForwardProp: prop => prop !== 'open' })(
-  ({ theme, open }) => ({
-    height: 'calc(100vh - 64px)',
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-)
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
-}))
-
-const Buttons = styled('div')({
-  width: '100%',
-})
-
-const DrawerContainer = styled('div')({
-  width: '90%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100%',
-})
+import {
+  Main,
+  DrawerHeader,
+  DrawerContainer,
+  Buttons,
+} from './styles/NewPaletteFormStyles'
+import { DRAWER_WIDTH } from './constants'
 
 export default class NewPaletteForm extends Component {
   static defaultProps = {
@@ -150,10 +113,10 @@ export default class NewPaletteForm extends Component {
         />
         <Drawer
           sx={{
-            width: drawerWidth,
+            width: DRAWER_WIDTH,
             flexShrink: 0,
             '& .MuiDrawer-paper': {
-              width: drawerWidth,
+              width: DRAWER_WIDTH,
               boxSizing: 'border-box',
               display: 'flex',
               alignItems: 'center',
